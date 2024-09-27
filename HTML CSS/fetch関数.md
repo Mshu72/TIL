@@ -12,21 +12,21 @@ fetch('https://api.example.com/data')
   .catch(error => console.error('Error:', error));  // 3. エラー処理
 ```
 ### ステップごとの解説
-`fetch('https://api.example.com/data')`
+`fetch('https://api.example.com/data')`  
 fetch 関数はURLを指定してサーバーにリクエストを送ります。  
 このリクエストは非同期で行われるので、すぐにレスポンスが返ってくるわけではありません。  
 結果を待ってから次の処理が実行されます。
 
-`.then(response => response.json())`
+`.then(response => response.json())`  
 fetch がサーバーからのレスポンスを受け取ると、そのレスポンスは response オブジェクトとして返されます。  
 通常、APIからのデータはJSON形式（JavaScript Object Notation）なので、`response.json() `を使ってデータをJavaScriptオブジェクトに変換します。
 
-`.then(data => console.log(data))`
+`.then(data => console.log(data))`  
 変換されたデータが `data `に格納されます。  
 この `data` を使って画面に表示したり、他の処理を行います。  
 ここでは` console.log(data)` によって、データをブラウザのコンソールに表示しています。
 
-`.catch(error => console.error('Error:', error))`
+`.catch(error => console.error('Error:', error))`  
 ネットワークエラーやリクエストの失敗が起きた場合、 `.catch() `でエラー処理を行います。  
 エラーが発生した場合は `console.error `でエラーメッセージが表示されます。
 
@@ -50,6 +50,7 @@ fetch('https://api.example.com/data', {
   .then(response => response.json())
   .then(data => console.log('Success:', data))
   .catch(error => console.error('Error:', error));
+```
 # まとめ
 fetch はサーバーからデータを取得したり、データを送信するために使います。  
 非同期処理なので、リクエストが完了するまで待たされることなく他の処理が進行します。  
