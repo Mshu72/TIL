@@ -1,5 +1,5 @@
 Spring Bootで使用される`Repository`クラスは、データベースとのやり取りを担当する重要な部分です。  
-以下に`Repository`クラスについて詳しく解説し、よくある疑問や「臭い（コードの問題や改善点）」についても触れます。
+
 
 ---
 
@@ -24,11 +24,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 ---
 
-## **2. Repositoryの実装の「臭い」**
-`Repository`でよく見られる「臭い」コードと、その解決策を解説します。
+## **2. Repositoryの実装の**
+`Repository`でよく見られるコードと、その解決策を解説します。
 
 ### **(1) 過剰なビジネスロジック**
-**臭い**:  
+**問題点**:  
 `Repository`に複雑なロジックを埋め込むことで、コードが可読性を失い、メンテナンスが困難になります。
 
 **例:**
@@ -46,7 +46,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 ---
 
 ### **(2) リポジトリの責務の肥大化**
-**臭い**:  
+**問題点**:  
 `Repository`が多くのエンティティやビジネスロジックに関わりすぎると、単一責任の原則に違反します。
 
 **例:**
@@ -81,7 +81,7 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 ---
 
 ### **(3) 過剰なカスタムクエリ**
-**臭い**:  
+**問題点**:  
 `@Query`でSQLやJPQLを多用する場合、リポジトリが肥大化し、コードの再利用性が低下します。
 
 **例:**
@@ -161,4 +161,4 @@ List<User> users = userRepository.findAll(
 - リポジトリの保守性と再利用性を向上。
 - 複雑なビジネスロジックを排除することで、クラスの単純さを維持。
 
-これらを守ることで、コードが「臭い」を持つことなく、よりメンテナブルになります。
+これらを守ることで、コードが問題点を持つことなく、よりメンテナブルになります。
