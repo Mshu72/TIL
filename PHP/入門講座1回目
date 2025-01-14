@@ -1,0 +1,30 @@
+<?php
+  $name = 'hallow PHP';
+  echo $name; // echoで画面に出力する
+
+
+  $text = '<h1>this is a ';
+  $program = 'PHP Program</h1>';
+  echo $text.$program; //’.’を入れることで変数をつないで表示することができる
+
+  echo $text.'nice program</h1>'; //変数以外もつなげることができる
+
+  $num = 100;
+  $string = '200';
+  echo $num + 50; //数値型の計算＝＞150
+  echo '<hr>'; //これがないと改行されない
+  echo $string + 50; //文字型に数値型の計算を行う＝＞250 暗黙の型変換が行われる
+  echo '<hr>';
+  echo $num . $string; //文字列と数値をつなげたた場合＝＞100200 文字列連結される
+  echo '<hr>';
+  if ($num == 100) {
+    echo 'num is 100';
+  } elseif ($num == 200) {
+    echo 'num is 200';
+  } else {
+    echo 'num is not 100 or 200';
+  }
+
+  print ($num + $string); //echoではなくても出力できる
+  print $num + $string; //（）は省略することも可能
+  print '<h1>'.$num.'</h1>'; //タグを入れる場合の書き方
