@@ -1,0 +1,110 @@
+<?php
+
+$height = 170; //身長（ｃｍ）
+$weight = 60; //体重（ｋｇ）
+
+// BMI : 体重/身長(m)の2乗
+function calculateBMI($wei,$hei) {
+  $heightInMeter = $hei / 100; //cmからｍに変換
+  $bmi = $wei / ($heightInMeter * $heightInMeter);
+  return $bmi; // 結果を返す
+}
+
+function getBMIStatus($bmi){
+  if ($bmi < 18.5) {
+    //条件が成立したときに実行する内容
+    return "低体重";
+  } elseif ($bmi >= 18.5 && $bmi < 25) {
+    //$bmiの値が18.5以上25未満
+    return "標準体重";
+  } elseif ($bmi >= 25 && $bmi < 30) {
+    return "肥満(1度)";
+  } elseif ($bmi <35 ) {
+    return "肥満(2度)";
+  } else {
+    // すべての条件に当てはまらない場合実行する
+    return "肥満(3度)";
+  }
+}
+
+$bmi = calculateBMI($weight, $height);
+$status =getBMIStatus($bmi);
+
+echo "BMI:".round($bmi,1)."\n";//round()→PHPに備わっている関数で四捨五入する関数
+echo "体型：".$status;
+
+
+//$_post でユーザーからデータを送信することができる
+// フォーム形式でのデータ送信　URLにパラメータが表示されない
+// ファイルを送信可能
+// $_post["パラメータ名"]
+
+//$_get でユーザーからデータを送信することができる
+//データはパラメータと同じ　URLに表示される
+// $_get["パラメータ名"]
+
+//サニタイズ
+//ユーザーから送られてくるデータが正しい形式か検証する
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <main>
+    <form  name="form1" method="post" action="confirm.php">
+      <p><label>お名前:
+      <input type="text" id="name" name="name" >
+      </label></p>
+      <p><label >メールアドレス:
+      <input type="email" id="email" name="email" >
+      </label></p>
+      <p><label>お問い合わせ内容<textarea id="name" name="content"></textarea>
+      </label></p>
+      <p><input type="submit" value="データを送信する"></p>
+    </form>
+  </main>
+
+  
+</body>
+</html>
+
+<?php
+  //データを受け取る
+  $name = $_POST["name"];
+  $email = $_POST["email"];
+  $content = $_POST["content"];
+
+  $error = ''; //変数の中身を空にして作成
+
+  if(strlen($name<1)){
+    //strlen()→()内で指定されている編集の文字の長さが返る
+    //名前が入力されていない場合に実行される
+    $error .= '名前が入力されていません<br>';
+    // .=→今変数に入っている内容に追記していく
+  }
+  if(!filter_ver($email, FILTER_VALIDATE_EMAIL,FILTER_FLAG_EMAIL_UNICODE)){
+    //filter_var()→引数で指定された入力を特定の形式にフィルタリングする
+    //FILTER_VALIDATE_EMAIL, FILTER_FLAG_EMAIL_UNICODE→メールアドレスをバリデートする正しければtrueを返す
+    //条件の先頭に！を入れることで結果を逆転させることができる
+    $error .= 'メールアドレスの形式が正しくありません<br>';
+  
+  }
+
+  if($error !== ''){
+    //エラーが発生した場合、以下のメッセージを表示
+    echo $error;
+    exit; //処理を終了する
+  }
+  echo '<hr>';
+  echo htmlspecialchars($name,ENT_QUOTES);
+  //$nameにHTMLタグが含まれていたら無効にした文字列を返す関数
+  echo '<br>';
+  echo htmlspecialchars($email,ENT_QUOTES);
+  echo '<br>';
+  echo nl2br(htmlspecialchars($content,ENT_QUOTES));
+  //nl2br()→改行を<br>タグに変換する
+?>
