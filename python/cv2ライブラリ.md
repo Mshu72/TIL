@@ -1,4 +1,4 @@
-## ** OpenCV（cv2）ライブラリとは？**
+## **OpenCV（cv2）ライブラリとは？**
 **OpenCV（Open Source Computer Vision Library）** は、画像処理やコンピュータービジョンのための **オープンソースライブラリ** です。  
 Pythonでは **`cv2`** というモジュール名で利用できます。  
 
@@ -10,7 +10,7 @@ Pythonでは **`cv2`** というモジュール名で利用できます。
 
 ---
 
-## ** OpenCV（cv2）の主な機能**
+## **OpenCV（cv2）の主な機能**
 ### **1️ 画像の読み込み・表示・保存**
 ```python
 import cv2
@@ -126,7 +126,7 @@ cv2.destroyAllWindows()
 
 ---
 
-## ** OpenCV（cv2）のインストール**
+## **OpenCV（cv2）のインストール**
 PythonでOpenCVを使うには、以下のコマンドでインストールできます。  
 ```sh
 pip install opencv-python
@@ -139,7 +139,7 @@ pip install opencv-python-headless
 
 ---
 
-## ** まとめ**
+## **まとめ**
 | 機能             | 関数                      | 説明 |
 |----------------|----------------------|------|
 | 画像の読み込み | `cv2.imread()`        | 画像をBGR形式で読み込む |
