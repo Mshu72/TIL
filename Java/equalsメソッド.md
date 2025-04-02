@@ -1,10 +1,8 @@
-良い質問です！Java 8 の `String` と `Optional` の `equals()` メソッドには、**共通点**もありますが、**根本的な目的と使い方が違う**ので、その違いをしっかり理解しておくのは大事です。
+Java 8 の `String` と `Optional` の `equals()` メソッドには、**共通点**もありますが、**根本的な目的と使い方が違う**
 
----
+##  1. `String.equals()` の基本
 
-## ✅ 1. `String.equals()` の基本
-
-### 🔹 主な用途：
+###  主な用途：
 2つの文字列が**内容として等しいかどうか**を比較する。
 
 ```java
@@ -25,9 +23,9 @@ str1.equals("hello"); // ❌ NullPointerException
 
 ---
 
-## ✅ 2. `Optional.equals()` の基本（Java 8以降）
+##  2. `Optional.equals()` の基本（Java 8以降）
 
-### 🔹 主な用途：
+###  主な用途：
 2つの `Optional` インスタンスが**同じ中身（value）を持っているか**を比較する。
 
 ```java
@@ -49,7 +47,7 @@ System.out.println(empty1.equals(empty2)); // true
 
 ---
 
-## 🔍 大きな違い（ポイント）
+##  大きな違い（ポイント）
 
 | 項目 | `String.equals()` | `Optional.equals()` |
 |------|------------------|--------------------|
@@ -60,16 +58,16 @@ System.out.println(empty1.equals(empty2)); // true
 
 ---
 
-### ✅ 実用的な注意点
+###  実用的な注意点
 
-#### ❌ 危険パターン
+####  危険パターン
 
 ```java
 String str = null;
 if (str.equals("test")) { ... } // ❌ NullPointerException
 ```
 
-#### ✅ 安全な書き方
+#### 安全な書き方
 
 ```java
 if ("test".equals(str)) { ... } // ⭕ 安全（リテラルを左に）
@@ -84,12 +82,10 @@ if (opt.isPresent() && opt.get().equals("test")) { ... }
 
 ---
 
-## 🧠 まとめ
+##  まとめ
 
 - `String.equals()` は **内容を比較**。`null` に注意！
 - `Optional.equals()` は **中身が等しいか**を比較。`empty()` 同士は等しい。
 - `Optional` を使うことで、**Nullの安全性が大きく向上**します。
 
----
 
-もっと細かいケースで「こういうときどうする？」みたいなのがあれば、そこを深掘りできますよ 😊
