@@ -88,4 +88,34 @@ if (opt.isPresent() && opt.get().equals("test")) { ... }
 - `Optional.equals()` は **中身が等しいか**を比較。`empty()` 同士は等しい。
 - `Optional` を使うことで、**Nullの安全性が大きく向上**します。
 
+---
+ `Objects.equals(Object a, Object b)` メソッドでは、**`null` 同士の比較は `true`** になります。
+
+### 詳しく解説すると：
+
+`Objects.equals(a, b)` の内部実装は以下のようになっています：
+
+```java
+public static boolean equals(Object a, Object b) {
+    return (a == b) || (a != null && a.equals(b));
+}
+```
+
+この実装を見ると：
+
+- `a == b` が最初に評価されます。ここで `a` と `b` の両方が `null` の場合、`true` になります。
+- どちらか一方が `null` で、もう一方が `null` でない場合は `false`
+- 両方が `null` でない場合は `a.equals(b)` の結果が返されます
+
+### 例：
+
+```java
+System.out.println(Objects.equals(null, null));     // true
+System.out.println(Objects.equals(null, "abc"));    // false
+System.out.println(Objects.equals("abc", null));    // false
+System.out.println(Objects.equals("abc", "abc"));   // true
+```
+
+つまり、`null` 同士でも安全に比較できるのが `Objects.equals` のメリットですね。
+
 
