@@ -82,12 +82,19 @@ function App() {
 
 ## 5. よく使う Props
 
-| Prop                        | 説明                         |
-| --------------------------- | -------------------------- |
-| `isOpen`                    | モーダルを表示するかどうか              |
-| `onRequestClose`            | モーダル外クリックや ESC で呼ばれるコールバック |
-| `style`                     | モーダルとオーバーレイのスタイルを指定        |
-| `contentLabel`              | アクセシビリティ用の説明               |
-| `shouldCloseOnOverlayClick` | オーバーレイのクリックで閉じる（デフォルトtrue） |
-| `shouldCloseOnEsc`          | ESCで閉じる（デフォルトtrue）         |
+| props名	| 引数の型	| 説明 |   
+| --- | --- | --- |   
+| isOpen | Boolean | モーダルが開いているか閉じているか |   
+| onAfterOpen	| Function | モーダルが開かれたあとに指定された関数が実行される |   
+| onAfterClose | Function	| モーダルが閉じられたあとに指定された関数が実行される |   
+| onRequestClose | Function | モーダルを閉じる命令が呼ばれた際に指定した関数が実行される |   
+| closeTimeoutMS | Number | 閉じる前に待機するミリ秒 |   
+| style	| {overlay: {}, content: {}} | style(CSS)を指定します。overlay(モーダルの外側の要素)とcontent(モーダルの要素)のstyleを指定する必要があります |   
+| overlayClassName | String	| 指定したclassを、モーダルの外側の要素に付与します |   
+| id | String	| 指定したidを、生成されるdiv要素に付与します |   
+| className	| String | 指定したclassを、生成されるモーダルに付与します |   
+| shouldFocusAfterRender | Boolean | モーダルが表示されたあとにフォーカスするかどうか (デフォルトがtrueなので無効にしたい場合使用する) |   
+| shouldCloseOnOverlayClick	| Boolean | 外側の余白をクリックした際にモーダルを閉じる命令をだすかどうか (デフォルトがtrueなので無効にしたい場合使用する) |   
+| shouldCloseOnEsc | Boolean | Escキーでモーダルを閉じるかどうか (デフォルトがtrueなので無効にしたい場合使用する) |   
 
+その他	-	ほかにも使用できるpropsがあります。限定的な場面でしか使用しないものもあるので説明は割愛します。こちらで他のpropsを確認できます。
